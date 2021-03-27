@@ -8,8 +8,10 @@ a generality as well as a proper documentation.
 ### inp
 Library to parse abaqus mesh (input *.inp*) files. General use:
 ```python
-
+Parser = inp.InpFileParser('test.inp',4)
+abq_mesh = Parser.parse()
 ```
+Note that 4 is specifies the number of nodes per element.
 
 ### VTKSampler
 Module to create a dolfin mesh consistent of hexagonal elements given a *.vtu*
