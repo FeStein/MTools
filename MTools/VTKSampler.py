@@ -162,7 +162,7 @@ class VTKSampler():
         editor.init_cells(np.sum(self.matindex))
 
         #create all nodes/vertices
-        logging.info('Init {} vertices:'.format(str(N**3)))
+        logging.info('Init {} vertices:'.format(np.sum(vertindex)))
         vertex_id = 0
         for zi in tqdm(range(N), ncols=80):
             zcoor = self.x[zi]
@@ -176,7 +176,7 @@ class VTKSampler():
                         vertex_id += 1
 
         #create elements/cells
-        logging.info('Init {} cells:'.format(str((N-1)**3)))
+        logging.info('Init {} cells:'.format(np.sum(self.matindex)))
         cell_id = 0
         for zi in tqdm(range(N-1), ncols=80):
             for yi in range(N-1):
