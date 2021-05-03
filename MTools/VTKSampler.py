@@ -116,10 +116,11 @@ class VTKSampler():
         self.x = x
         self.matindex = matindex
 
-    def create_dolfin_mesh(self):
+    def create_dolfin_mesh(self, *args):
         """
-        Creates a three dimensional regular fenics mesh of 2 materials, defined by
-        a spacing vector and an index vector
+        Creates a three dimensional regular fenics mesh of 2 materials, defined
+        by a spacing vector and an index vector 
+        *args: Arguments to pass for the mesh initialization (MPI communicator)
 
         :x: axis vector, defining the uniform spacing of the nodes
         :matindex: three dimensional matrix of {0;1} indicating the material allocation
@@ -127,7 +128,7 @@ class VTKSampler():
         """
         N = len(self.x)
 
-        mesh = dlf.Mesh()
+        mesh = dlf.Mesh(*args)
         editor = dlf.MeshEditor()
         editor.open(mesh, 'hexahedron', 3, 3)
         mat_vert = np.full((N, N, N), -1)
